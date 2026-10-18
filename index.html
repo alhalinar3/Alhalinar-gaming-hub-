@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALHALINAR GAMING HUB</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #080d0a;
+      color: white;
+    }
+
+    header {
+      background: #101a12;
+      padding: 22px 15px;
+      text-align: center;
+      border-bottom: 2px solid #16c75a;
+    }
+
+    header h1 {
+      color: #25e875;
+      margin: 0;
+      font-size: 25px;
+    }
+
+    header p {
+      color: #c5d5ca;
+      margin-bottom: 0;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 15px;
+      background: #111713;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 9px 12px;
+      border: 1px solid #2b4834;
+      border-radius: 8px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 35px 18px;
+      background: linear-gradient(145deg, #12351e, #080d0a);
+    }
+
+    .hero h2 {
+      color: #25e875;
+      font-size: 28px;
+    }
+
+    .container {
+      max-width: 950px;
+      margin: auto;
+      padding: 15px;
+    }
+
+    .card {
+      background: #121a15;
+      border: 1px solid #263b2d;
+      border-radius: 12px;
+      padding: 18px;
+      margin: 15px 0;
+    }
+
+    h2, h3 {
+      color: #25e875;
+    }
+
+    select, input, button {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 7px;
+      border: 1px solid #385642;
+      font-size: 16px;
+    }
+
+    select, input {
+      background: #080d0a;
+      color: white;
+    }
+
+    button {
+      background: #16b953;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .competition-links a {
+      display: inline-block;
+      color: #75f5a0;
+      margin: 6px 10px 6px 0;
+    }
+
+    .notice {
+      color: #d0d9d2;
+      line-height: 1.6;
+    }
+
+    footer {
+      text-align: center;
+      padding: 22px;
+      background: #101a12;
+      color: #b9c8bd;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>⚽ ALHALINAR GAMING HUB</h1>
+    <p>Your football gaming and news destination</p>
+  </header>
+
+  <nav>
+    <a href="#competitions">Competitions</a>
+    <a href="#news">Football News</a>
+    <a href="#games">Gaming</a>
+    <a href="#sources">Official Sources</a>
+  </nav>
+
+  <section class="hero">
+    <h2>Football Never Stops!</h2>
+    <p>Football competitions, gaming guides and updates in one place.</p>
+  </section>
+
+  <main class="container">
+    <section class="card" id="competitions">
+      <h2>🏆 Football Competitions</h2>
+      <label for="competition">Choose a competition:</label>
+
+      <select id="competition" onchange="changeCompetition()">
+        <option value="">Choose a competition</option>
+        <option value="PL">Premier League</option>
+        <option value="PD">La Liga</option>
+        <option value="BL1">Bundesliga</option>
+        <option value="SA">Serie A</option>
+        <option value="FL1">Ligue 1</option>
+        <option value="CL">UEFA Champions League</option>
+        <option value="TR">Trendyol Süper Lig</option>
+      </select>
+
+      <h3 id="competition-title">Select a competition above</h3>
+
+      <p class="notice" id="competition-description">
+        Choose a league to see its official website and data status.
+      </p>
+
+      <div class="competition-links">
+        <a id="official-link" href="https://www.uefa.com/" target="_blank" rel="noopener">Official website</a>
+      </div>
+    </section>
+
+    <section class="card" id="news">
+      <h2>📰 Latest Football News</h2>
+      <p class="notice">
+        News will appear here when we connect a verified news source.
+        No live news is connected yet.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>📅 Fixtures & Results</h2>
+      <p class="notice">
+        Live fixtures and results are not connected yet. We will add verified
+        football data after setting up a secure server connection.
+      </p>
+    </section>
+
+    <section class="card" id="games">
+      <h2>🎮 eFootball</h2>
+      <p>Guides, player information, formations and gameplay tips.</p>
+      <a href="https://www.konami.com/efootball/" target="_blank" rel="noopener">
+        Visit the official eFootball website
+      </a>
+    </section>
+
+    <section class="card">
+      <h2>🎮 EA SPORTS FC Mobile</h2>
+      <p>Game guides, player information, events and gameplay tips.</p>
+      <a href="https://www.ea.com/games/ea-sports-fc/fc-mobile" target="_blank" rel="noopener">
+        Visit the official FC Mobile website
+      </a>
+    </section>
+
+    <section class="card" id="sources">
+      <h2>🔗 Official Competition Sources</h2>
+      <p id="source-description" class="notice">
+        Select a competition above to open its official website.
+      </p>
+      <a id="source-link" href="https://www.uefa.com/" target="_blank" rel="noopener">
+        Open official source
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 ALHALINAR GAMING HUB</p>
+    <p>Built for football and gaming fans ⚽💚</p>
+  </footer>
+
+  <script>
+    const competitions = {
+      PL: {
+        name: "Premier League",
+        description: "English top-flight football. Live data is not connected yet.",
+        url: "https://www.premierleague.com/"
+      },
+      PD: {
+        name: "La Liga",
+        description: "Spanish top-flight football. Live data is not connected yet.",
+        url: "https://www.laliga.com/"
+      },
+      BL1: {
+        name: "Bundesliga",
+        description: "German top-flight football. Live data is not connected yet.",
+        url: "https://www.bundesliga.com/"
+      },
+      SA: {
+        name: "Serie A",
+        description: "Italian top-flight football. Live data is not connected yet.",
+        url: "https://www.legaseriea.it/"
+      },
+      FL1: {
+        name: "Ligue 1",
+        description: "French top-flight football. Live data is not connected yet.",
+        url: "https://www.ligue1.com/"
+      },
+      CL: {
+        name: "UEFA Champions League",
+        description: "European club competition. Live data is not connected yet.",
+        url: "https://www.uefa.com/uefachampionsleague/"
+      },
+      TR: {
+        name: "Trendyol Süper Lig",
+        description: "Turkish top-flight football. Live data availability depends on the data provider.",
+        url: "https://www.tff.org/"
+      }
+    };
+
+    function changeCompetition() {
+      const selected = document.getElementById("competition").value;
+      const title = document.getElementById("competition-title");
+      const description = document.getElementById("competition-description");
+      const officialLink = document.getElementById("official-link");
+      const sourceDescription = document.getElementById("source-description");
+      const sourceLink = document.getElementById("source-link");
+
+      if (!selected) {
+        title.textContent = "Select a competition above";
+        description.textContent = "Choose a league to see its official website and data status.";
+        sourceDescription.textContent = "Select a competition above to open its official website.";
+        officialLink.href = "https://www.uefa.com/";
+        sourceLink.href = "https://www.uefa.com/";
+        return;
+      }
+
+      const competition = competitions[selected];
+
+      title.textContent = competition.name;
+      description.textContent = competition.description;
+      sourceDescription.textContent = "Official source for " + competition.name + ".";
+      officialLink.textContent = "Visit " + competition.name;
+      officialLink.href = competition.url;
+      sourceLink.textContent = "Open " + competition.name + " official website";
+      sourceLink.href = competition.url;
+    }
+  </script>
+</body>
+</html>
