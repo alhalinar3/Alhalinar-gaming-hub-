@@ -282,5 +282,94 @@
       sourceLink.href = competition.url;
     }
   </script>
+<!-- ALHALINAR GAMING MUSIC PLAYER -->
+<section id="gaming-music" style="background:#101a12;color:white;padding:25px;margin:20px auto;border:1px solid #25e875;border-radius:15px;max-width:950px;font-family:Arial,sans-serif;">
+
+  <h2 style="color:#25e875;">🎧 ALHALINAR GAMING MUSIC</h2>
+  <p>Enjoy your favourite beats while exploring our football gaming hub!</p>
+
+  <h3 id="track-title">Choose a track</h3>
+
+  <audio id="music-player" controls preload="none" style="width:100%;"></audio>
+
+  <div style="display:flex;gap:10px;margin-top:15px;flex-wrap:wrap;">
+    <button id="previous-track" type="button" style="padding:12px;background:#25e875;border:0;border-radius:7px;">⏮ Previous</button>
+    <button id="next-track" type="button" style="padding:12px;background:#25e875;border:0;border-radius:7px;">⏭ Next</button>
+  </div>
+
+  <h3 style="margin-top:20px;">🎵 Your Playlist</h3>
+  <div id="music-playlist"></div>
+  <p id="music-status" style="color:#25e875;"></p>
+
+</section>
+
+<script>
+(function () {
+  const tracks = [
+    "Ice Spice - Deli Lyrics.mp3",
+    "David Kushner - Daylight Lyrics.mp3",
+    "Toxic Lyrikali - HOOD.mp3",
+    "Toxic Lyrikali - Hate.mp3",
+    "Toxic Lyrikali - Wrong People Freestyle Lyric Video.mp3",
+    "Toxic Lyrikali - Glitter Freestyle.mp3",
+    "Ruth B - Dandelions Lyrics .mp3",
+    "LOVIXX, STOSLIV - Don't tell your dreams (Lyrics)_1782766452442.mp3",
+    "Ice Spice & Central Cee - Did It First Clean Lyrics.mp3",
+    "GTW Mik - Sorry (Piano Version) (Official Visualizer)_1785563214706.mp3",
+    "Central Cee - Right Now ft. Dutchavell & JBEE [Music Video]_1781033247546.mp3",
+    "Central Cee - Nightfall ft Stormzy x Tion Wayne (Music Video)_1781033261369.mp3"
+  ];
+
+  const player = document.getElementById("music-player");
+  const title = document.getElementById("track-title");
+  const playlist = document.getElementById("music-playlist");
+  const status = document.getElementById("music-status");
+  let currentTrack = 0;
+
+  function loadTrack(index) {
+    currentTrack = (index + tracks.length) % tracks.length;
+    const filename = tracks[currentTrack];
+
+    player.src = "/music/" + encodeURIComponent(filename);
+    title.textContent = filename;
+    status.textContent = "Selected track " + (currentTrack + 1) + " of " + tracks.length;
+    player.load();
+  }
+
+  tracks.forEach(function (filename, index) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.textContent = (index + 1) + ". " + filename;
+    button.style.cssText = "display:block;width:100%;padding:12px;margin:7px 0;background:#17251a;color:white;border:1px solid #25e875;border-radius:7px;text-align:left;overflow-wrap:anywhere;";
+    button.addEventListener("click", function () {
+      loadTrack(index);
+      player.play().catch(function () {
+        status.textContent = "Press Play to listen, or check that this file exists in the music folder.";
+      });
+    });
+    playlist.appendChild(button);
+  });
+
+  document.getElementById("next-track").addEventListener("click", function () {
+    loadTrack(currentTrack + 1);
+  });
+
+  document.getElementById("previous-track").addEventListener("click", function () {
+    loadTrack(currentTrack - 1);
+  });
+
+  player.addEventListener("ended", function () {
+    loadTrack(currentTrack + 1);
+    player.play().catch(function () {});
+  });
+
+  player.addEventListener("error", function () {
+    status.textContent = "This track could not load. Check its exact filename in the music folder.";
+  });
+
+  loadTrack(0);
+})();
+</script>
+<!-- END ALHALINAR GAMING MUSIC PLAYER -->
 </body>
 </html>
